@@ -1,7 +1,7 @@
-import { AppError } from '../../../shared/errors/AppError'
-import { Product } from '../typeorm/entities/Product'
-import { ProductsRepository } from '../typeorm/repository/ProductRepository'
-import { getCustomRepository } from 'typeorm'
+import { AppError } from "../../../shared/errors/AppError"
+import { Product } from "../typeorm/entities/Product"
+import { ProductsRepository } from "../typeorm/repository/ProductRepository"
+import { getCustomRepository } from "typeorm"
 
 export class RemoveProductService {
   public async execute(id: string): Promise<string> {

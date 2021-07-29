@@ -1,7 +1,7 @@
-import { AppError } from '../../../shared/errors/AppError'
-import { Product } from '../typeorm/entities/Product'
-import { ProductsRepository } from '../typeorm/repository/ProductRepository'
-import { getCustomRepository } from 'typeorm'
+import { AppError } from "../../../shared/errors/AppError"
+import { Product } from "../typeorm/entities/Product"
+import { ProductsRepository } from "../typeorm/repository/ProductRepository"
+import { getCustomRepository } from "typeorm"
 
 interface IRequest {
   name: string
@@ -19,7 +19,7 @@ export class CreateProductService {
     const productExists = await productsRepository.findByName(name)
     if (productExists) {
       throw new AppError(
-        'Já existe produto cadastrado com o nome informado',
+        "Já existe produto cadastrado com o nome informado",
         400,
       )
     }
