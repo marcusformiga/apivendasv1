@@ -2,7 +2,7 @@
   "editor.minimap.enabled": false,
   "workbench.colorTheme": "Dracula",
   "workbench.iconTheme": "material-icon-theme",
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "editor.lineHeight": 24,
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
@@ -45,7 +45,7 @@
     "javascript": "javascriptreact"
   },
   "editor.renderLineHighlight": "gutter",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 12,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "material-ui-snippets.showNotesOnStartup": false,
   "window.zoomLevel": 1
