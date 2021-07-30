@@ -13,10 +13,11 @@ export function isAuthenticated(
     throw new AppError("Não existe token jwt", 401)
   }
   const [bearer, token] = authHeader.split(" ")
+
   try {
     const decodedToken = jwt.verify(token, authJwt.jwt.secret)
     return next()
   } catch {
-    throw new AppError(`Token jwt ${token} inválido`, 401)
+    throw new AppError(`Token jwt inválido`, 401)
   }
 }
