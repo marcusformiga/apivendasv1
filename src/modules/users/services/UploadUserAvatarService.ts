@@ -14,7 +14,7 @@ interface IRequest {
 }
 
 export class UploadUserAvatarService {
-  public async execute({ user_id, avatarFileName }: IRequest): Promise<User> {
+  public async execute({ user_id, avatarFileName }: IRequest): Promise<User| undefined> {
     const userRepository = getCustomRepository(UserRepository)
     const user = await userRepository.findById(user_id)
     if (!user) {
