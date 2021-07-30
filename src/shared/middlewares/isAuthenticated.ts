@@ -3,6 +3,12 @@ import { AppError } from "../errors/AppError"
 import jwt from "jsonwebtoken"
 import { authJwt } from "../config/auth"
 
+interface ITokenPayload {
+  iat: number
+  exp: number
+  sub: string
+}
+
 export function isAuthenticated(
   request: Request,
   response: Response,
@@ -16,6 +22,10 @@ export function isAuthenticated(
 
   try {
     const decodedToken = jwt.verify(token, authJwt.jwt.secret)
+    const { sub } = decodedToken as ITokenPayload
+    request.user = {
+      id: sub,
+    }
     return next()
   } catch {
     throw new AppError(`Token jwt inválido`, 401)
