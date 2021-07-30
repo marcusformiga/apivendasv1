@@ -4,7 +4,7 @@ import { UserRepository } from "../typeorm/repository/Users"
 import { getCustomRepository } from "typeorm"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-const secret = "haeuhaseuahse"
+import { authJwt } from "../../../shared/config/auth"
 
 interface IRequest {
   email: string
@@ -25,9 +25,9 @@ export class CreateSessionsService {
     if (!passwordConfirmed) {
       throw new AppError("Combinação de email/password incorretos", 401)
     }
-    const token = jwt.sign({}, secret, {
+    const token = jwt.sign({}, authJwt.jwt.secret, {
       subject: user.id,
-      expiresIn: "1d",
+      expiresIn: authJwt.jwt.expiresIn,
     })
     await userRepository.save(user)
     return {
