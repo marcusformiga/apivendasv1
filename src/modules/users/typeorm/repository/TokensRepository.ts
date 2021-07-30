@@ -1,4 +1,4 @@
-import { Entity, EntityRepository, Repository } from "typeorm"
+import { EntityRepository, Repository } from "typeorm"
 import { UserToken } from "../entities/UserToken"
 
 @EntityRepository(UserToken)
