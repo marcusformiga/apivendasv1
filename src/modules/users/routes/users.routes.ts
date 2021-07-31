@@ -29,3 +29,5 @@ usersRouter.patch(
   upload.single("avatar"),
   userAvatarController.upload,
 )
+usersRouter.delete("/:id", isAuthenticated, userController.remove)
+
