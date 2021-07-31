@@ -12,7 +12,7 @@ interface IRequest {
   password?: string
   old_password?: string
 }
-export class ListOneUserService {
+export class UpdateProfileService {
   public async execute({
     user_id,
     name,
