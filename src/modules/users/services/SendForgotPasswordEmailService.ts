@@ -11,6 +11,7 @@ export class SendForgotPasswordEmailService {
     const userRepository = getCustomRepository(UserRepository)
     const tokenRepository = getCustomRepository(TokensRepository)
     const user = await userRepository.findByEmail(email)
+    console.log(user)
     if (!user) {
       throw new AppError(`Usuário com email informado não existe`, 404)
     }
