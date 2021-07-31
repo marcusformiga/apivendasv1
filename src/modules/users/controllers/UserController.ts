@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { CreateUserService } from "../services/CreateUserService"
 import { ListAllUsersService } from "../services/ListAllUsersService"
+import { RemoveUserService } from "../services/RemoveUserService"
 
 export class UserController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -13,6 +14,12 @@ export class UserController {
     const listAllUsers = new ListAllUsersService()
     const users = await listAllUsers.execute()
     return response.json(users)
+  }
+  public async remove(request: Request, response: Response): Promise<Response>{
+    const { id } = request.params
+    const removeUser = new RemoveUserService()
+    const user = await removeUser.execute(id)
+    return response.send(`Usuário com id ${id} removido`)
   }
 }
 
