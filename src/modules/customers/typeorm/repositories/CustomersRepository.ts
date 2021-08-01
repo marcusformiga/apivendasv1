@@ -15,4 +15,10 @@ export class CustomersRepository extends Repository<Customer> {
     })
     return customer
   }
+  public async findByEmail(email: string): Promise<Customer | undefined> {
+    const customer = await this.findOne({
+      where: { email },
+    })
+    return customer
+  }
 }
