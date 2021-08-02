@@ -5,6 +5,7 @@ import { sessionsRouter } from "../../../modules/users/routes/sessions.routes"
 import { passwordRoutes } from "../../../modules/users/routes/password.routes"
 import { profileRouter } from "../../../modules/users/routes/profile.routes"
 import { customersRoutes } from "../../../modules/customers/routes/customers.routes"
+import { orderRoutes } from "../../../modules/orders/routes/orders.routes"
 export const routes = Router()
 
 routes.use("/products", productRouter)
@@ -13,3 +14,4 @@ routes.use("/sessions", sessionsRouter)
 routes.use("/password", passwordRoutes)
 routes.use("/profile", profileRouter)
 routes.use("/customers", customersRoutes)
+routes.use("/orders", orderRoutes)
