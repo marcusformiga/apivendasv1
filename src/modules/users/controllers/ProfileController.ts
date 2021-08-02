@@ -1,13 +1,13 @@
 import { Request, Response } from "express"
 import { ListOneUserService } from "../services/ListOneUserService"
 import { UpdateProfileService } from "../services/UpdateProfileService"
-
+import { classToClass } from "class-transformer"
 export class ProfileController {
   public async list(request: Request, response: Response): Promise<Response> {
     const id = request.params.id
     const listUser = new ListOneUserService()
     const user = await listUser.execute(id)
-    return response.json(user)
+    return response.json(classToClass(user))
   }
   public async update(request: Request, response: Response): Promise<Response> {
     const { user_id, name, email, password } = request.body
@@ -18,6 +18,6 @@ export class ProfileController {
       email,
       password,
     })
-    return response.json(dataUser)
+    return response.json(classToClass(dataUser))
   }
 }
