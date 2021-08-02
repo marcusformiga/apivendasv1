@@ -1,6 +1,7 @@
 import "reflect-metadata"
 import "express-async-errors"
 import express, { NextFunction, Request, Response } from "express"
+import { pagination } from "typeorm-pagination"
 import { AppError } from "../../errors/AppError"
 import { errors } from "celebrate"
 import "../../database/connection"
@@ -10,6 +11,7 @@ const port = 3001
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(pagination)
 app.use(routes)
 app.use(errors())
 app.use(
