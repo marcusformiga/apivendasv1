@@ -1,6 +1,9 @@
-import { Repository, EntityRepository } from "typeorm"
+import { Repository, EntityRepository, In } from "typeorm"
 import { Product } from "../entities/Product"
 
+interface IFindProduct {
+  id: string
+}
 @EntityRepository(Product)
 export class ProductsRepository extends Repository<Product> {
   public async findByName(name: string): Promise<Product | undefined> {
@@ -14,5 +17,14 @@ export class ProductsRepository extends Repository<Product> {
       where: { id },
     })
     return product
+  }
+  public async findAllByIds(products: IFindProduct[]): Promise<Product[]> {
+    const productsIds = products.map(product => product.id)
+    const existsProducts = await this.find({
+      where: {
+        id: In(productsIds),
+      },
+    })
+    return existsProducts
   }
 }
